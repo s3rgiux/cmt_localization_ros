@@ -89,11 +89,9 @@ class image_converter:
     self.image_pub = rospy.Publisher("image_topic_cmt",Image,queue_size=1)
     self.vis_odo_pub = rospy.Publisher("visual_odometry",Odometry,queue_size=1)
     self.bridge = CvBridge()
-    #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+
     self.image_sub = rospy.Subscriber("/ocam/image_raw",Image,self.callback,queue_size=1)
     self.yaw_sub = rospy.Subscriber( "model_car/yaw2", Float32,self.headingcallback,queue_size=1)
-    #self.odom_sub = rospy.Subscriber( "odom", Float32,self.h,queue_size=1)
-    #self.image_sub = rospy.Subscriber("/usb2_cam/image_rect_color",Image,self.callback)
     self.CRT = CMT.CMT()
     
 
@@ -101,16 +99,10 @@ class image_converter:
     self.CRT.estimate_scale = 'estimate_scale'
     self.CRT.estimate_rotation = 'estimate_rotation'
     self.pause_time = 10
-    ###########################Primer Region
-    #im0 = cv2.imread('./frame_cuadri_1500.jpg', flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('./frame_cap_16.jpg', flags=cv2.IMREAD_GRAYSCALE)
+    #ROI
+    
     im0 = cv2.imread('./frame_cap_11.jpg', flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('./frame_fisica3.jpg', flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('./frame_cap_16.jpg', flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('./frame_cap_noche.jpg', flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('./frame_cap3.jpg', flags=cv2.IMREAD_GRAYSCALE)#flags=cv2.IMREAD_GRAYSCALE)
-    #im0 = cv2.imread('/home/sergio/catikin_ws_user/src/cmt/scripts/frame.jpg', flags=cv2.IMREAD_COLOR)
-    #im0 = cv2.imread('/home/sergio/catikin_ws_user/src/cmt/scripts/frame.jpg',flags=cv2.IMREAD_GRAYSCALE)
+    
     #cv2.imshow('im0', im0)
     #im_gray0 = cv2.cvtColor(im0, cv2.COLOR_BGR2GRAY)
     im_gray0=im0

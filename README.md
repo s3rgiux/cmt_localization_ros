@@ -1,31 +1,26 @@
-# hexacopter_optitrack
+# CMT Localization
+
 Repository that allows to localizate using any ROI, was designed to operate on indoors just needed to know the size of the region of interest ROI
+
+Link to the article of this repository
 
 https://ieeexplore.ieee.org/document/8540752/
 
 
+Based on thee algorithm of
+
+https://www.gnebehay.com/cmt/ 
+
 # requires
 
 * Python
-* Sci tools
+* Scipy
+* Itertools
 * Opencv2
 
 # How to Run
 
-This project consider that PX4 is correctly seted up followring the next links.
-
-- https://docs.px4.io/master/en/ros/external_position_estimation.html
-- https://risc.readthedocs.io/1-indoor-flight.html
-
-It considers that Motive is calibrated and computers are on the me network with differents IP addresses.
-
-On Motive:
-
-* Creates a Rigid Body on motive and name it (this name will be used).
-* Stream the position over VRPN using the up axis as Y.
-
-
-On ROS:
+Save the image that conatins the ROI where we want to perform localization.
 
 ```
 # Clone this workspace on ROS
